@@ -7,6 +7,7 @@ import java.util.Set;
 @Table(name = "users")
 public class User {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment ID
     private Long id;
@@ -28,6 +29,10 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Attendance> attendanceRecords; // Relationship with Attendance
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "batch_id")
+    private Batch batch;
 
     // Default Constructor
     public User() {
