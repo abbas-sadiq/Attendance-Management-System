@@ -1,40 +1,39 @@
 package com.attendancemanagementsystem.model;
 
 import jakarta.persistence.*;
-import org.springframework.data.relational.core.mapping.Column;
-import org.springframework.data.relational.core.mapping.Table;
-
 import java.util.Set;
 
 @Entity
-@Table(name = "users") // Maps this class to the "users" table in the database
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment ID
     private Long id;
 
-    // Username must be unique and cannot be null
+    @Column(nullable = false, unique = true) // Username must be unique and not null
     private String username;
 
-  // Password cannot be null
+    @Column(nullable = false) // Password cannot be null
     private String password;
 
-    // Full name cannot be null
+    @Column(nullable = false) // Full name cannot be null
     private String fullName;
 
- // Email must be unique and cannot be null
+    @Column(nullable = false, unique = true) // Email must be unique and not null
     private String email;
-    // Role (e.g., Admin, User, etc.)
-    private String role;
+
+    @Column(nullable = false) // Role cannot be null
+    private String role; // Example: "Admin", "Teacher", "Student"
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Attendance> attendanceRecords; // Relationship with the Attendance model
+    private Set<Attendance> attendanceRecords; // Relationship with Attendance
 
-    // Constructors
+    // Default Constructor
     public User() {
     }
 
+    // Parameterized Constructor
     public User(String username, String password, String fullName, String email, String role) {
         this.username = username;
         this.password = password;
