@@ -1,12 +1,10 @@
 package com.attendancemanagementsystem.repository;
 
-
-
-import org.apache.catalina.User;
+import com.attendancemanagementsystem.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
-import java.util.Optional;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface UserRepo extends JpaRepository<User, Long> {
-    Optional<User> findByUsername(String username); // Custom method to find a user by username
+    User findByUsername(String username); // Custom query to find a user by username
 }
-
