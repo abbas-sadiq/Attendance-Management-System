@@ -8,6 +8,8 @@ import java.util.Set;
 public class User {
 
 
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment ID
     private Long id;
@@ -33,6 +35,11 @@ public class User {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "batch_id")
     private Batch batch;
+
+    @ManyToOne
+    @JoinColumn(name = "department_id") // Foreign key column
+    private Department department;
+
 
     // Default Constructor
     public User() {

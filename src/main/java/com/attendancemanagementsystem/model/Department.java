@@ -14,11 +14,11 @@ public class Department {
     @Column(nullable = false, unique = true)
     private String departmentName; // Name of the department (e.g., "Computer Science")
 
-    @OneToMany(mappedBy = "departments", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<User> users; // Relationship with Users
 
-    @OneToMany(mappedBy = "departments", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<Classes> classes; // Relationship with Classes
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Classes> classes; // Fixed mapping (was "departments", now "department")
 
     // Constructors
     public Department() {

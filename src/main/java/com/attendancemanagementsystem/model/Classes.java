@@ -24,7 +24,11 @@ public class Classes {
             joinColumns = @JoinColumn(name = "class_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    private Set<User> users; // Relationship with Users (e.g., students, teachers)
+    private Set<User> users;
+
+    @ManyToOne
+    @JoinColumn(name = "department_id") // Correct foreign key mapping
+    private Department department; // Changed from 'departments' to 'department'
 
     // Constructors
     public Classes() {
@@ -66,5 +70,13 @@ public class Classes {
 
     public void setUsers(Set<User> users) {
         this.users = users;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 }
