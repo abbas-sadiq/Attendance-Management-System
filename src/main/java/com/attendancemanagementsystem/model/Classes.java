@@ -18,6 +18,7 @@ public class Classes {
     @JoinColumn(name = "batch_id")
     private Batch batch;
 
+
     @ManyToMany(fetch = FetchType.LAZY) // Classes can have multiple users
     @JoinTable(
             name = "class_users",
