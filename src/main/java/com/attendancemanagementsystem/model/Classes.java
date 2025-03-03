@@ -31,7 +31,6 @@ public class Classes {
     @JoinColumn(name = "department_id") // Correct foreign key mapping
     private Department department; // Changed from 'departments' to 'department'
 
-    // Constructors
     public Classes() {
     }
 
@@ -40,7 +39,6 @@ public class Classes {
         this.batch = batch;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }

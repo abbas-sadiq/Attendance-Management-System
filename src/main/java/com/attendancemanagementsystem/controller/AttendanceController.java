@@ -1,8 +1,10 @@
 package com.attendancemanagementsystem.controller;
 
+import com.attendancemanagementsystem.exceptions.ApiResponse;
 import com.attendancemanagementsystem.model.Attendance;
 import com.attendancemanagementsystem.service.AttendanceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,8 +17,9 @@ public class AttendanceController {
     private AttendanceService attendanceService;
 
     @PostMapping
-    public Attendance markAttendance(@RequestBody Attendance attendance) {
-        return attendanceService.saveAttendance(attendance);
+   public ResponseEntity<ApiResponse<Attendance>> addAttendance(@RequestBody Attendance attendance) {
+        return ResponseEntity.ok(new ApiResponse<>(true,attendance,null));
+
     }
 
     @GetMapping
